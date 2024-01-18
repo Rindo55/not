@@ -364,8 +364,8 @@ class clicker:
                 print(f'[~] Mining {_sc} coins ...')
                 if getData["data"][0]["availableCoins"] < _sc:
                     if not self.readyToClick():
-                        print('[~] Sleeping For 10MIN')
-                        time.sleep(600)
+                        print('[~] Sleeping For 5MIN')
+                        time.sleep(300)
                 
                 if getData['data'][0]['turboTimes'] > 0:
                     print('')
