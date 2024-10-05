@@ -81,11 +81,11 @@ async def fetch_tom_price():
         if hour24.startswith("-"):
             pass
         else:
-            hou24 = f"+{hour24}%"
+            hou24 = f"+{hour24}"
       
         
         # Format the message with 8 decimal places
-        message = f"The current price of $TOM is **${current_price:.8f}** (24h: {hour24})"
+        message = f"The current price of $TOM is **${current_price:.8f}** (24h: {hour24}%)"
         
         # Calculate percentage difference if previous price exists
         if previous_price is not None:
