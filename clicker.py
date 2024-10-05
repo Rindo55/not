@@ -15,7 +15,7 @@ from threading import Thread, active_count
 from concurrent.futures import ThreadPoolExecutor
 from telethon.extensions import markdown, html
 from telethon import types
-from telethon.extensions.html import DEFAULT_DELIMITERS, parse
+from telethon.extensions.markdown import DEFAULT_DELIMITERS, parse
 from telethon.tl.types import MessageEntityBlockquote
 DEFAULT_DELIMITERS['%%'] = lambda *a, **k: MessageEntityBlockquote(*a, **k, collapsed=True)
 
@@ -23,7 +23,7 @@ DEFAULT_DELIMITERS['%%'] = lambda *a, **k: MessageEntityBlockquote(*a, **k, coll
 class CustomMarkdown:
     @staticmethod
     def parse(text):
-        text, entities = html.parse(text)
+        text, entities = markdown.parse(text)
         for i, e in enumerate(entities):
             if isinstance(e, types.MessageEntityTextUrl):
                 if e.url == 'spoiler':
@@ -38,7 +38,7 @@ class CustomMarkdown:
                 entities[i] = types.MessageEntityTextUrl(e.offset, e.length, f'emoji/{e.document_id}')
             if isinstance(e, types.MessageEntitySpoiler):
                 entities[i] = types.MessageEntityTextUrl(e.offset, e.length, 'spoiler')
-        return html.unparse(text, entities)
+        return markdown.unparse(text, entities)
 with open('config.json') as f:
     data = json.load(f)
     api_id = data['api_id']
@@ -95,7 +95,7 @@ async def fetch_tom_price():
       
         
         # Format the message with 8 decimal places
-        message = f"%%<blockquote collapse><b><u>TOKEN PRICE:</u>\n1 $TOM = ${current_price:.8f}\n100 $TOM = ${price_100_tom:.8f}\n10k $TOM = ${price_10000_tom:.8f}</b>\n\n<u><b>PRICE CHANGE PERCENTAGE</b></u>\n1h: {hour1}%\n24h: {hour24}%</blockquote collapse>%%"
+        message = f"<ins><blockquote collapse><b><u>TOKEN PRICE:</u>\n1 $TOM = ${current_price:.8f}\n100 $TOM = ${price_100_tom:.8f}\n10k $TOM = ${price_10000_tom:.8f}</b>\n\n<u><b>PRICE CHANGE PERCENTAGE</b></u>\n1h: {hour1}%\n24h: {hour24}%</blockquote collapse></ins>"
         
         # Calculate percentage difference if previous price exists
         if previous_price is not None:
