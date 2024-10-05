@@ -77,6 +77,8 @@ async def fetch_tom_price():
         
         # Extract the current price of TOM
         current_price = float(data['data'][0]['attributes']['token_price_usd'])
+        price_100_tom = current_price * 100
+        price_10000_tom = current_price * 10000
         hour24 = data['data'][0]['attributes']['price_change_percentage']['h24']
         hour1 = data['data'][0]['attributes']['price_change_percentage']['h1']
         if hour1.startswith("-"):
@@ -91,7 +93,7 @@ async def fetch_tom_price():
       
         
         # Format the message with 8 decimal places
-        message = f"<blockquote><b><u>TOKEN PRICE:</u>\n1 $TOM = ${current_price:.8f}\n100 $TOM = ${current_price:.8f * 100}\n10k $TOM = ${current_price:.8f * 10000}</b>\n<u><b>PRICE CHANGE PERCENTAGE</b></u>\n1h: {hour1}\n24h: {hour24}%</blockquote>"
+        message = f"<blockquote><b><u>TOKEN PRICE:</u>\n1 $TOM = ${current_price:.8f}\n100 $TOM = ${price_100_tom:.8f}\n10k $TOM = ${price_10000_tom:.8f}</b>\n<u><b>PRICE CHANGE PERCENTAGE</b></u>\n1h: {hour1}\n24h: {hour24}%</blockquote>"
         
         # Calculate percentage difference if previous price exists
         if previous_price is not None:
