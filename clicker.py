@@ -26,7 +26,6 @@ client_id = client.get_me(True).user_id
 
 
 
-
 db = {
     'click': 'off'
 }
@@ -453,6 +452,7 @@ async def answer(event):
     elif text == '/help':
         _mining_clicker = client_clicker.mining_started
         _clicker_stats = "ON 🟢" if _mining_clicker else "OFF 🔴"
+        await _send_message('hello this is a [hidden text](spoiler), with custom emoji [❤️](emoji/5924664908158341416) !')
         await _sendMessage(f"""
 🤖 Welcome to Not Coin Collector Bot! 🟡
 
