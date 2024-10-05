@@ -78,14 +78,20 @@ async def fetch_tom_price():
         # Extract the current price of TOM
         current_price = float(data['data'][0]['attributes']['token_price_usd'])
         hour24 = data['data'][0]['attributes']['price_change_percentage']['h24']
+        hour1 = data['data'][0]['attributes']['price_change_percentage']['h1']
+        if hour1.startswith("-"):
+            pass
+        else:
+            hour1 = f"+{hour24}"
+      
         if hour24.startswith("-"):
             pass
         else:
-            hou24 = f"+{hour24}"
+            hour24 = f"+{hour24}"
       
         
         # Format the message with 8 decimal places
-        message = f"<blockquote><b><u>TOKEN PRICE:</u>1 $TOM = ${current_price:.8f}</b>\n<u><b>PRICE CHANGE PERCENTAGE</b></u>\n24h: {hour24}%)</blockquote>"
+        message = f"<blockquote><b><u>TOKEN PRICE:</u>\n1 $TOM = ${current_price:.8f}\n100 $TOM = ${current_price:.8f * 100}\n10k $TOM = ${current_price:.8f * 10000}</b>\n<u><b>PRICE CHANGE PERCENTAGE</b></u>\n1h: {hour1}\n24h: {hour24}%</blockquote>"
         
         # Calculate percentage difference if previous price exists
         if previous_price is not None:
@@ -100,8 +106,8 @@ async def fetch_tom_price():
         
         # Send the message to the specified channel
         client.parse_mode = CustomMarkdown()
-        message += f"\n\n**TOM | The Token of 2024** [🍅](emoji/5924664908158341416)" 
-        await client.edit_message(-1002314161300, 179, message, parse_mode='html')
+        message += f"\n\n<b>TOM | The Token of 2024</b> [🍅](emoji/5924664908158341416)" 
+        await client.edit_message(-1002314161300, 179, message)
         
         # Wait for 1 minute before fetching again
         await asyncio.sleep(60)
