@@ -13,7 +13,7 @@ import time
 import json
 from threading import Thread, active_count
 from concurrent.futures import ThreadPoolExecutor
-from telethon.extensions import markdown
+from telethon.extensions import markdown, html
 from telethon import types
 
 
@@ -21,7 +21,7 @@ from telethon import types
 class CustomMarkdown:
     @staticmethod
     def parse(text):
-        text, entities = markdown.parse(text)
+        text, entities = html.parse(text)
         for i, e in enumerate(entities):
             if isinstance(e, types.MessageEntityTextUrl):
                 if e.url == 'spoiler':
