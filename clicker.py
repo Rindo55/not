@@ -99,6 +99,7 @@ async def fetch_tom_price():
         previous_price = current_price
         
         # Send the message to the specified channel
+        client.parse_mode = CustomMarkdown()
         message += f"\n\n**TOM | The Token of 2024** [🍅](emoji/5924664908158341416)" 
         await client.send_message(CHANNEL_ID, message)
         
