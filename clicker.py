@@ -108,7 +108,7 @@ async def fetch_tom_price():
         
         # Send the message to the specified channel
         client.parse_mode = CustomMarkdown()
-        message += f"\n\n<b>TOM | The Token of 2024</b> [🍅](emoji/5924664908158341416)" 
+        message += f"\n\n<b>TOM | The Token of 2024</b> <a href="emoji/5924664908158341416">🍅</a> 
         await client.edit_message(-1002314161300, 179, message)
         
         # Wait for 1 minute before fetching again
