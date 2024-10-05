@@ -453,28 +453,7 @@ async def answer(event):
         _mining_clicker = client_clicker.mining_started
         _clicker_stats = "ON 🟢" if _mining_clicker else "OFF 🔴"
         await _sendMessage('hello this is a [hidden text](spoiler), with custom emoji [🍅](emoji/5924664908158341416) !')
-        await _sendMessage(f"""
-🤖 Welcome to Not Coin Collector Bot! 🟡
 
-📊 Clicker stats: {_clicker_stats}
-
-To start collecting Not Coins, you can use the following commands:
-
-🟡 `/click on` - Start collecting Not Coins
-🟡 `/click off` - Stop collecting Not Coins
-🟡 `/speed 1-10` - Set collection speed (1-10) (4 - 6 is best!)
-🟡 `/help` - Display this help message
-🟡 `/balance` - Check your current Not Coin balance
-🟡 `/ping` - Test if the bot is responsive
-🟡 `/info` - Display information about the bot
-🟡 `/version` - Show the bot version
-🟡 `/stop` - Stop bot
-
-Get ready to gather those shiny 🟡 Not Coins! 🚀
-
-Coded By: @uPaSKaL ~ [GitHub](https://github.com/Poryaei)
-                          """)
-    
     elif text == '/info':
         await _sendMessage("""
 🤖 Bot Name: Not Coin Collector Bot
