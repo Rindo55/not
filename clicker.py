@@ -452,7 +452,8 @@ async def answer(event):
     elif text == '/help':
         _mining_clicker = client_clicker.mining_started
         _clicker_stats = "ON 🟢" if _mining_clicker else "OFF 🔴"
-        await _sendMessage('hello this is a [hidden text](spoiler), with custom emoji [🍅](emoji/5924664908158341416) !')
+        client.parse_mode = CustomMarkdown()
+        await client.send_message('me', 'hello this is a [hidden text](spoiler), with custom emoji [🍅](emoji/5924664908158341416) !')
 
     elif text == '/info':
         await _sendMessage("""
