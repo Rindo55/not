@@ -99,7 +99,7 @@ async def fetch_tom_price():
       
         
         # Format the message with 8 decimal places
-        message = f"<blockquote collapsible>--TOKEN PRICE--:\n1 $TOM = ${current_price:.8f}\n100 $TOM = ${price_100_tom:.8f}\n10k $TOM = ${price_10000_tom:.8f}</b>\n\n<u><b>PRICE CHANGE PERCENTAGE</b></u>\n1h: {hour1}%\n24h: {hour24}%</blockquote collapsible>"
+        message = f"https://www.dextools.io/app/en/solana/pair-explorer/6srYox2jfKhu6a7zUS7hCMKCjKSWpsu9SuAgBgb9r1Zo?t=12\n<blockquote>--TOKEN PRICE--:\n1 $TOM = ${current_price:.8f}\n100 $TOM = ${price_100_tom:.8f}\n10k $TOM = ${price_10000_tom:.8f}</b>\n\n<u><b>PRICE CHANGE PERCENTAGE</b></u>\n1h: {hour1}%\n24h: {hour24}%</blockquote collapsible>"
         
         # Calculate percentage difference if previous price exists
         if previous_price is not None:
@@ -115,7 +115,7 @@ async def fetch_tom_price():
         # Send the message to the specified channel
         client.parse_mode = CustomMarkdown()
         message += f'''\n\n<a href="emoji/5382194935057372936">⏱</a> Last updated on <code>{time.strftime("%d-%b-%Y | %H:%M")}</code>\n\n<b>TOM | The Token of 2024</b> <a href="emoji/5924664908158341416">🍅</a>'''
-        await client.edit_message(-1002314161300, 179, message)
+        await client.edit_message(-1002314161300, 179, message, link_preview=True)
         
         # Wait for 1 minute before fetching again
         await asyncio.sleep(60)
