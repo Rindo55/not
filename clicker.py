@@ -99,7 +99,7 @@ async def fetch_tom_price():
       
         
         # Format the message with 8 decimal places
-        message = f"<blockquote expandable>--TOKEN PRICE--:\n1 $TOM = ${current_price:.8f}\n100 $TOM = ${price_100_tom:.8f}\n10k $TOM = ${price_10000_tom:.8f}</b>\n\n<u><b>PRICE CHANGE PERCENTAGE</b></u>\n1h: {hour1}%\n24h: {hour24}%</blockquote expandable>"
+        message = f"<blockquote collapse>--TOKEN PRICE--:\n1 $TOM = ${current_price:.8f}\n100 $TOM = ${price_100_tom:.8f}\n10k $TOM = ${price_10000_tom:.8f}</b>\n\n<u><b>PRICE CHANGE PERCENTAGE</b></u>\n1h: {hour1}%\n24h: {hour24}%</blockquote collapse>"
         
         # Calculate percentage difference if previous price exists
         if previous_price is not None:
