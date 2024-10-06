@@ -23,7 +23,7 @@ from telethon.tl.types import MessageEntityBlockquote
 class CustomMarkdown:
     @staticmethod
     def parse(text):
-        text, entities = markdown.parse(text)
+        text, entities = html.parse(text)
         for i, e in enumerate(entities):
             if isinstance(e, types.MessageEntityTextUrl):
                 if e.url == 'spoiler':
@@ -42,7 +42,7 @@ class CustomMarkdown:
                 entities[i] = types.MessageEntityTextUrl(e.offset, e.length, f'emoji/{e.document_id}')
             if isinstance(e, types.MessageEntitySpoiler):
                 entities[i] = types.MessageEntityTextUrl(e.offset, e.length, 'spoiler')
-        return markdown.unparse(text, entities)
+        return html.unparse(text, entities)
 with open('config.json') as f:
     data = json.load(f)
     api_id = data['api_id']
