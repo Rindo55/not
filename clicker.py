@@ -115,7 +115,7 @@ async def fetch_tom_price():
         
         # Send the message to the specified channel
         client.parse_mode = CustomMarkdown()
-        message += f'''\n\n<a href="emoji/5382194935057372936">⏱</a> Last updated on <code>{time.strftime("%d-%b-%Y | %H:%M")}</code>\n\n<a href="emoji/5217561885049628845">✅</a> <a href="https://t.me/TOMSolCoin_Announcements">Telegram</a>\n\n<b>TOM | The Token of 2024</b> <a href="emoji/5924664908158341416">🍅</a>'''
+        message += f'''\n\n<a href="emoji/5382194935057372936">⏱</a> Last updated on <code>{time.strftime("%d-%b-%Y | %H:%M")} UTC</code>\n\n<a href="emoji/5217561885049628845">✅</a> <a href="https://t.me/TOMSolCoin_Announcements">Telegram</a>\n\n<b>TOM | The Token of 2024</b> <a href="emoji/5924664908158341416">🍅</a>'''
         await client.edit_message(-1002314161300, 179, message, link_preview=True)
         
         # Wait for 1 minute before fetching again
