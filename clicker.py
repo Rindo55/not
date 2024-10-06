@@ -2,6 +2,7 @@ import asyncio
 import js2py
 import requests
 import os, sys, ssl
+from string import digits
 from telethon.sync import TelegramClient
 from telethon import events
 from telethon.sync import functions, types, events
@@ -96,10 +97,10 @@ async def fetch_tom_price():
             pass
         else:
             hour24 = f"+{hour24}"
-      
+        hash = "".join([random.choice(digits) for n in range(3)])
         
         # Format the message with 8 decimal places
-        message = f"https://www.dextools.io/app/en/solana/pair-explorer/6srYox2jfKhu6a7zUS7hCMKCjKSWpsu9SuAgBgb9r1Zo?t=12\n<blockquote>--TOKEN PRICE--:\n1 $TOM = ${current_price:.8f}\n100 $TOM = ${price_100_tom:.8f}\n10k $TOM = ${price_10000_tom:.8f}</b>\n\n<u><b>PRICE CHANGE PERCENTAGE</b></u>\n1h: {hour1}%\n24h: {hour24}%</blockquote collapsible>"
+        message = f"https://www.dextools.io/app/en/solana/pair-explorer/6srYox2jfKhu6a7zUS7hCMKCjKSWpsu9SuAgBgb9r1Zo?t={hash}\n<blockquote>--TOKEN PRICE--:\n1 $TOM = ${current_price:.8f}\n100 $TOM = ${price_100_tom:.8f}\n10k $TOM = ${price_10000_tom:.8f}</b>\n\n<u><b>PRICE CHANGE PERCENTAGE</b></u>\n1h: {hour1}%\n24h: {hour24}%</blockquote collapsible>"
         
         # Calculate percentage difference if previous price exists
         if previous_price is not None:
