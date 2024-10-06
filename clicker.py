@@ -17,7 +17,7 @@ from telethon.extensions import markdown, html
 from telethon import types
 from telethon.extensions.markdown import DEFAULT_DELIMITERS, parse
 from telethon.tl.types import MessageEntityBlockquote
-DEFAULT_DELIMITERS['%%'] = lambda *a, **k: MessageEntityBlockquote(*a, **k, collapsed=True)
+#DEFAULT_DELIMITERS['%%'] = lambda *a, **k: MessageEntityBlockquote(*a, **k, collapsed=True)
 
 # -----------
 class CustomMarkdown:
@@ -30,6 +30,10 @@ class CustomMarkdown:
                     entities[i] = types.MessageEntitySpoiler(e.offset, e.length)
                 elif e.url.startswith('emoji/'):
                     entities[i] = types.MessageEntityCustomEmoji(e.offset, e.length, int(e.url.split('/')[1]))
+                elif e.url.startswith('quote'):
+                    collapse = e.url.endswith('collapse')
+                    entities[i] = types.MessageEntityBlockquote(e.offset, e.length, collapsed=collapse)
+    
         return text, entities
     @staticmethod
     def unparse(text, entities):
@@ -95,7 +99,7 @@ async def fetch_tom_price():
       
         
         # Format the message with 8 decimal places
-        message = f"--TOKEN PRICE--:\n1 $TOM = ${current_price:.8f}\n100 $TOM = ${price_100_tom:.8f}\n10k $TOM = ${price_10000_tom:.8f}</b>\n\n<u><b>PRICE CHANGE PERCENTAGE</b></u>\n1h: {hour1}%\n24h: {hour24}%</blockquote collapse></ins>"
+        message = f"[--TOKEN PRICE--:\n1 $TOM = ${current_price:.8f}\n100 $TOM = ${price_100_tom:.8f}\n10k $TOM = ${price_10000_tom:.8f}</b>\n\n<u><b>PRICE CHANGE PERCENTAGE</b></u>\n1h: {hour1}%\n24h: {hour24}%](quote-collapse)"
         
         # Calculate percentage difference if previous price exists
         if previous_price is not None:
