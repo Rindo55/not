@@ -98,9 +98,9 @@ async def fetch_tom_price():
         else:
             hour24 = f"+{hour24}"
         hash = "".join([random.choice(digits) for n in range(3)])
-        
+        dexlink = f"https://www.dextools.io/app/en/solana/pair-explorer/6srYox2jfKhu6a7zUS7hCMKCjKSWpsu9SuAgBgb9r1Zo?t={hash}"
         # Format the message with 8 decimal places
-        message = f"https://www.dextools.io/app/en/solana/pair-explorer/6srYox2jfKhu6a7zUS7hCMKCjKSWpsu9SuAgBgb9r1Zo?t={hash}\n<blockquote>--TOKEN PRICE--:\n1 $TOM = ${current_price:.8f}\n100 $TOM = ${price_100_tom:.8f}\n10k $TOM = ${price_10000_tom:.8f}</b>\n\n<u><b>PRICE CHANGE PERCENTAGE</b></u>\n1h: {hour1}%\n24h: {hour24}%</blockquote collapsible>"
+        message = f"<blockquote><b><u>TOKEN PRICE</b></u><a href={dexlink}>:</a>\n1 $TOM = ${current_price:.8f}\n100 $TOM = ${price_100_tom:.8f}\n10k $TOM = ${price_10000_tom:.8f}</b>\n\n<u><b>PRICE CHANGE PERCENTAGE</b></u>\n1h: {hour1}%\n24h: {hour24}%</blockquote collapsible>"
         
         # Calculate percentage difference if previous price exists
         if previous_price is not None:
