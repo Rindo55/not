@@ -107,7 +107,7 @@ async def fetch_tom_price():
         
         # Calculate percentage difference if previous price exists
      #   if previous_price is not None:
-            difference_percentage = ((current_price - previous_price) / previous_price) * 100
+            #difference_percentage = ((current_price - previous_price) / previous_price) * 100
             
             # Only include price change in the message if it's not zero
            # if difference_percentage != 0:
