@@ -86,7 +86,7 @@ async def fetch_tom_price():
         current_price = float(data['data'][0]['attributes']['token_price_usd'])
         price_100_tom = current_price * 100
         price_10000_tom = current_price * 10000
-        hour24 = data['data'][0]['attributes']['price_change_percentage']['h24']
+        hour24 = data['data'][0]['attributes']['price_change_percentage']['h6']
         hour1 = data['data'][0]['attributes']['price_change_percentage']['h1']
         if hour1.startswith("-"):
             pass
@@ -103,7 +103,7 @@ async def fetch_tom_price():
         hash = "".join([random.choice(digits) for n in range(3)])
         dexlink = f"https://www.dextools.io/app/en/solana/pair-explorer/6srYox2jfKhu6a7zUS7hCMKCjKSWpsu9SuAgBgb9r1Zo?t={hash}"
         # Format the message with 8 decimal places
-        message = f'''<blockquote><b>1 $TOM = ${current_price:.5f} (24h:<a href={dexlink}> </a>{hour24})\n100 $TOM = ${price_100_tom:.5f}\n10k $TOM = ${price_10000_tom:.5f}</b></blockquote>\n\n<a href="emoji/5440621591387980068">🔜</a><i>Road to 1$</i> <a href="emoji/5195033767969839232">🚀</a>\n\n<a href="emoji/5382194935057372936">⏱</a> Last updated: <code>{time.strftime("%d-%b-%Y|%H:%M")} UTC</code>\n\n<a href="emoji/5202113974312653146">🪙</a> $TOM CA: <code>tomDEqSDN1xdrcodffuwRDoGa8eMp7dZmS5fHGoUnvo</code>\n\n<a href="emoji/5321344937919260235">🛒</a> $TOM: <a href="emoji/5249089169795339091">🤑</a><a href="https://jup.ag/swap/USDC-tomDEqSDN1xdrcodffuwRDoGa8eMp7dZmS5fHGoUnvo"> Jupiter</a> | <a href="emoji/5427376165650179119">💶</a><a href="https://raydium.io/swap/?inputMint=sol&outputMint=tomDEqSDN1xdrcodffuwRDoGa8eMp7dZmS5fHGoUnvo">Raydium</a>\n\n<a href="emoji/5217561885049628845">✅</a><a href="https://t.me/TOMSolCoin_Announcements">Telegram</a> | <a href="emoji/5341323326188956773">🚀</a><a href="https://x.com/TOMSolCoin">Twitter</a> | <a href="emoji/5251397822091111425">🚀</a><a href="https://tomcoin.app">Web</a> | <a href="emoji/5217447394106421040">✅</a><a href="https://www.dexview.com/solana/tomDEqSDN1xdrcodffuwRDoGa8eMp7dZmS5fHGoUnvo">DexView</a>'''
+        message = f'''<blockquote><b>1 $TOM = ${current_price:.5f} (6h:<a href={dexlink}> </a>{hour24})\n100 $TOM = ${price_100_tom:.5f}\n10k $TOM = ${price_10000_tom:.5f}</b></blockquote>\n\n<a href="emoji/5440621591387980068">🔜</a><i>Road to 1$</i> <a href="emoji/5195033767969839232">🚀</a>\n\n<a href="emoji/5382194935057372936">⏱</a> Last updated: <code>{time.strftime("%d-%b-%Y|%H:%M")} UTC</code>\n\n<a href="emoji/5202113974312653146">🪙</a> $TOM CA: <code>tomDEqSDN1xdrcodffuwRDoGa8eMp7dZmS5fHGoUnvo</code>\n\n<a href="emoji/5321344937919260235">🛒</a> $TOM: <a href="emoji/5249089169795339091">🤑</a><a href="https://jup.ag/swap/USDC-tomDEqSDN1xdrcodffuwRDoGa8eMp7dZmS5fHGoUnvo"> Jupiter</a> | <a href="emoji/5427376165650179119">💶</a><a href="https://raydium.io/swap/?inputMint=sol&outputMint=tomDEqSDN1xdrcodffuwRDoGa8eMp7dZmS5fHGoUnvo">Raydium</a>\n\n<a href="emoji/5217561885049628845">✅</a><a href="https://t.me/TOMSolCoin_Announcements">Telegram</a> | <a href="emoji/5341323326188956773">🚀</a><a href="https://x.com/TOMSolCoin">Twitter</a> | <a href="emoji/5251397822091111425">🚀</a><a href="https://tomcoin.app">Web</a> | <a href="emoji/5217447394106421040">✅</a><a href="https://www.dexview.com/solana/tomDEqSDN1xdrcodffuwRDoGa8eMp7dZmS5fHGoUnvo">DexView</a>'''
         
         # Calculate percentage difference if previous price exists
         if previous_price is not None:
