@@ -97,9 +97,9 @@ async def fetch_tom_price():
             hour24=f'''{hour24}% <a href="emoji/5246762912428603768">📉</a>'''
         else:
             if float(hour24) > 5:
-                hour24 = '''+{hour24}% <a href="emoji/5411233191765759009">🐂</a>'''
+                hour24 = f'''+{hour24}% <a href="emoji/5411233191765759009">🐂</a>'''
             else: 
-                hour24 = '''+{hour24}% <a href="emoji/5244837092042750681">📈</a>'''
+                hour24 = f'''+{hour24}% <a href="emoji/5244837092042750681">📈</a>'''
         hash = "".join([random.choice(digits) for n in range(3)])
         dexlink = f"https://www.dextools.io/app/en/solana/pair-explorer/6srYox2jfKhu6a7zUS7hCMKCjKSWpsu9SuAgBgb9r1Zo?t={hash}"
         # Format the message with 8 decimal places
