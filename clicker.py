@@ -94,13 +94,16 @@ async def fetch_tom_price():
             hour1 = f"+{hour1}"
       
         if hour24.startswith("-"):
-            pass
+            hour24=f'''{hour24}% <a href="emoji/5246762912428603768">📉</a>'''
         else:
-            hour24 = f"+{hour24}"
+            if hour24 > 5:
+                hour24 = '''+{hour24}% <a href="emoji/5411233191765759009">🐂</a>'''
+            else: 
+                hour24 = '''+{hour24}% <a href="emoji/5244837092042750681">📈</a>'''
         hash = "".join([random.choice(digits) for n in range(3)])
         dexlink = f"https://www.dextools.io/app/en/solana/pair-explorer/6srYox2jfKhu6a7zUS7hCMKCjKSWpsu9SuAgBgb9r1Zo?t={hash}"
         # Format the message with 8 decimal places
-        message = f"<blockquote><b><u>TOKEN PRICE</b></u><a href={dexlink}>:</a>\n1 $TOM = ${current_price:.8f}\n100 $TOM = ${price_100_tom:.8f}\n10k $TOM = ${price_10000_tom:.8f}</b>\n\n<u><b>PRICE CHANGE PERCENTAGE</b></u>\n1h: {hour1}%\n24h: {hour24}%</blockquote collapsible>"
+        message = f"<blockquote><b>1 $TOM = ${current_price:.5f} (24h: {hour24})\n100 $TOM = ${price_100_tom:.5f}\n10k $TOM = ${price_10000_tom:.5f}</b></blockquote>\n\n<u><b><a href="emoji/5440621591387980068">🔜</a> Road to 1$ <a href="emoji/5195033767969839232">🚀</a>\n\n<a href="emoji/5382194935057372936">⏱</a> Last updated: <code>{time.strftime("%d-%b-%Y|%H:%M")} UTC</code>\n\n<a href="emoji/5202113974312653146">🪙</a>$TOM CA: tomDEqSDN1xdrcodffuwRDoGa8eMp7dZmS5fHGoUnvo<code>\n\n<a href="emoji/5321344937919260235">🛒</a>"
         
         # Calculate percentage difference if previous price exists
         if previous_price is not None:
