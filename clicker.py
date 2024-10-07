@@ -96,7 +96,7 @@ async def fetch_tom_price():
         if hour24.startswith("-"):
             hour24=f'''{hour24}% <a href="emoji/5246762912428603768">📉</a>'''
         else:
-            if int(hour24) > 5:
+            if float(hour24) > 5:
                 hour24 = '''+{hour24}% <a href="emoji/5411233191765759009">🐂</a>'''
             else: 
                 hour24 = '''+{hour24}% <a href="emoji/5244837092042750681">📈</a>'''
