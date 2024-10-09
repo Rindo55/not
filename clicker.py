@@ -129,8 +129,8 @@ async def main():
 
 @client.on(events.NewMessage(chat=-4566569277, pattern="/price"))
 async def main(event):
-        url = "https://api.geckoterminal.com/api/v2/networks/solana/tokens/tomDEqSDN1xdrcodffuwRDoGa8eMp7dZmS5fHGoUnvo/pools?page=1"
-    previous_price = None  # Variable to store the previous price
+    url = "https://api.geckoterminal.com/api/v2/networks/solana/tokens/tomDEqSDN1xdrcodffuwRDoGa8eMp7dZmS5fHGoUnvo/pools?page=1"
+
 
     while True:
         response = requests.get(url)
