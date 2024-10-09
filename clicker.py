@@ -127,6 +127,42 @@ async def fetch_tom_price():
 async def main():
     await fetch_tom_price()
 
+@client.on(events.NewMessage(chat=-4566569277, pattern="/price"))
+async def main(event):
+        url = "https://api.geckoterminal.com/api/v2/networks/solana/tokens/tomDEqSDN1xdrcodffuwRDoGa8eMp7dZmS5fHGoUnvo/pools?page=1"
+    previous_price = None  # Variable to store the previous price
+
+    while True:
+        response = requests.get(url)
+        data = response.json()
+        
+        # Extract the current price of TOM
+        current_price = float(data['data'][0]['attributes']['token_price_usd'])
+        price_100_tom = current_price * 100
+        price_10000_tom = current_price * 10000
+        hour24 = data['data'][0]['attributes']['price_change_percentage']['h6']
+        hour1 = data['data'][0]['attributes']['price_change_percentage']['h1']
+        if hour1.startswith("-"):
+            pass
+        else:
+            hour1 = f"+{hour1}"
+      
+        if hour24.startswith("-"):
+            hour24=f'''{hour24}% <a href="emoji/5246762912428603768">📉</a>'''
+        else:
+            if float(hour24) > 5:
+                hour24 = f'''+{hour24}% <a href="emoji/5411233191765759009">🐂</a>'''
+            else: 
+                hour24 = f'''+{hour24}% <a href="emoji/5244837092042750681">📈</a>'''
+        hash = "".join([random.choice(digits) for n in range(5)])
+        dexlink = f"https://www.dextools.io/app/en/solana/pair-explorer/6srYox2jfKhu6a7zUS7hCMKCjKSWpsu9SuAgBgb9r1Zo?t={hash}"
+        # Format the message with 8 decimal places
+        message = f'''<blockquote><b>1 $TOM = ${current_price:.5f} (6h:<a href={dexlink}> </a>{hour24})\n100 $TOM = ${price_100_tom:.5f}\n10k $TOM = ${price_10000_tom:.5f}</b></blockquote>\n\n</a>\n\n<a href="emoji/5202113974312653146">🪙</a> $TOM CA: <code>tomDEqSDN1xdrcodffuwRDoGa8eMp7dZmS5fHGoUnvo</code>\n\n<a href="emoji/5321344937919260235">🛒</a> $TOM: <a href="emoji/5249089169795339091">🤑</a><a href="https://jup.ag/swap/USDC-tomDEqSDN1xdrcodffuwRDoGa8eMp7dZmS5fHGoUnvo"> Jupiter</a> | <a href="emoji/5427376165650179119">💶</a><a href="https://raydium.io/swap/?inputMint=sol&outputMint=tomDEqSDN1xdrcodffuwRDoGa8eMp7dZmS5fHGoUnvo"> Raydium</a>\n\n<a href="emoji/5217561885049628845">✅</a>'''
+        client.parse_mode = CustomMarkdown()
+        message += f'''\n\n<b>$TOM | The Token of 2024</b> <a href="emoji/5924664908158341416">🍅</a>'''
+        await client.send_message(-4566569277, message, link_preview=True)
+            
+            # Only include price change in the
 # Run the bot
 with client:
     client.loop.run_until_complete(main())
