@@ -122,7 +122,7 @@ async def fetch_tom_price():
         await client.edit_message(-1002364483472, 2, message, link_preview=True)
         
         # Wait for 1 minute before fetching again
-        await asyncio.sleep(60)
+        await asyncio.sleep(120)
 
 async def main():
     await fetch_tom_price()
