@@ -129,6 +129,7 @@ async def main():
 
 @client.on(events.NewMessage(chats=-4566569277, pattern="/price"))
 async def mai(event):
+    msg = event.message
     url = "https://api.geckoterminal.com/api/v2/networks/solana/tokens/tomDEqSDN1xdrcodffuwRDoGa8eMp7dZmS5fHGoUnvo/pools?page=1"
     
     response = requests.get(url)
@@ -163,7 +164,7 @@ async def mai(event):
     client.parse_mode = CustomMarkdown()
     message += f'''\n\n<b>$TOM | The Token of 2024</b> <a href="emoji/5924664908158341416">🍅</a>'''
     
-    await client.send_message(-4566569277, message, link_preview=True)
+    await client.send_message(-4566569277, reply_to=msg.id, message, link_preview=True)
             # Only include price change in the
 # Run the bot
 with client:
