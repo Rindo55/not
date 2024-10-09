@@ -166,5 +166,5 @@ async def mai(event):
 # Run the bot
 with client:
     client.loop.run_until_complete(main())
-    client.loop.run_until_complete(main(event))
+    client.run_until_disconnected()
     
