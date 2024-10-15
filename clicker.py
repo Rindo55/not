@@ -127,7 +127,7 @@ async def fetch_tom_price():
 async def main():
     await fetch_tom_price()
 
-@client.on(events.NewMessage(chats=-1002393055054, pattern="/price"))
+@client.on(events.NewMessage(chats=-1001541249835, pattern="/price"))
 async def mai(event):
     msg = event.message
     url = "https://api.geckoterminal.com/api/v2/networks/solana/tokens/tomDEqSDN1xdrcodffuwRDoGa8eMp7dZmS5fHGoUnvo/pools?page=1"
